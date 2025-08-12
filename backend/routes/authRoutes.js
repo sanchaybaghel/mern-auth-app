@@ -5,8 +5,9 @@ const multer = require('multer');
 const upload = multer({ storage });
 const authController = require('../controllers/authController');
 
-router.post('/signup', upload.single('photo'), authController.signup);
-router.post('/verify-otp', authController.verifyOTP);
+// Correct routes to match frontend API calls
+router.post('/signup', upload.single('photo'), authController.sendOTPForSignup);
+router.post('/verify-otp', authController.verifyOTPAndCreateUser);
 router.post('/login', authController.login);
 
 module.exports = router;
